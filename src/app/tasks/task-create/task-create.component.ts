@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { TaskService } from '../task.service';
 import { ProjectService } from '../../projects/project.service';
 import { UserService } from '../../users/user.service';
 import { Task } from '../task';
 import { User } from '../../users/user';
 import { Project } from '../../projects/project';
-
+import { Guid } from 'guid-typescript';
 @Component({
-  selector: 'task-detail',
-  templateUrl: './task-detail.html',
-  styleUrls: ['task-detail.css']
+  selector: 'task-create',
+  templateUrl: './task-create.html',
+  styleUrls: ['./task-create.css']
 })
-export class TaskDetailComponent implements OnInit {
+export class TaskCreateComponent implements OnInit {
 
   task: Task = {
+    id: Guid.create().toString(),
     name: '',
     description: '',
     projectId: '',
@@ -27,21 +28,11 @@ export class TaskDetailComponent implements OnInit {
   selectedProjectId: string;
   selectedUserId: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private taskService: TaskService, private projectService: ProjectService, private userService: UserService) { }
+  constructor(private router: Router, private taskService: TaskService, private projectService: ProjectService, private userService: UserService) { }
+
   ngOnInit(): void {
-    const routeParam = this.route.snapshot.paramMap.get('id');
     this.getProjects();
     this.getUsers();
-    this.getTaskByGuid(routeParam);
-  }
-
-  getTaskByGuid(taskGuid): void {
-    this.taskService.getTask(taskGuid)
-    .subscribe(task => {
-      this.task = task
-      this.selectedProjectId = task.projectId;
-      this.selectedUserId = task.userId;
-    });
   }
 
   getProjects(): void {
@@ -54,17 +45,10 @@ export class TaskDetailComponent implements OnInit {
     .subscribe(users => this.users = users);
   }
 
-  onDeleteTask(taskGuid): void {
-    this.taskService.deleteTask(taskGuid)
-    .subscribe(
-      r =>  this.router.navigate(['/tasks'])
-    )
-  }
-  
-  onUpdateTask(): void {
+  onCreateTask(): void {
     this.task.projectId = this.selectedProjectId;
     this.task.userId = this.selectedUserId;
-    this.taskService.updateTask(this.task)
+    this.taskService.addTask(this.task)
     .subscribe(r => this.router.navigate(['/tasks']));
   }
 

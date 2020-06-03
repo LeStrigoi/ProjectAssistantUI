@@ -1,9 +1,22 @@
-<h2>Task Details for: {{task.name}}</h2>
-
-<p>{{task.description}}</p>
-<hr>
-<p>Assigned User: {{task.assigned_user}}</p>
-<p>Project: {{task.project}}</p>
-<hr>
-<button type="button" class="btn btn-primary">Update</button>
-<button type="button" class="btn btn-danger">Delete</button>
+<section id="task-detail">
+  <div class="card task-card" style="width: 100%;">
+      <div class="card-body">
+      <h5 class="card-title">New Task Details</h5>
+      <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="task.name" placeholder="Task Name">
+        </div>
+       <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="task.description" placeholder="Task Description">
+        </div>
+        <select class="form-control form-control-lg" [(ngModel)]="selectedProjectId">
+          <option *ngFor="let project of projects" [ngValue]="project.id">{{project.name}}</option>
+        </select>
+        <select class="form-control form-control-lg" [(ngModel)]="selectedUserId">
+          <option *ngFor="let user of users" [ngValue]="user.id">{{user.name}}</option>
+        </select>
+      <hr>
+        <button type="button" class="btn btn-primary" (click)="onUpdateTask()">Update</button>
+        <button type="button" class="btn btn-danger" (click)="onDeleteTask(task.id)">Delete</button>
+        </div>
+    </div>
+</section>

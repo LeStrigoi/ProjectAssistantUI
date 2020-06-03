@@ -1,8 +1,7 @@
 <section id="project-detail">
     <div class="card project-card" style="width: 100%;">
         <div class="card-body">
-        <h5 class="card-title">Project Details</h5>
-        <code>{{project.id}}</code>
+        <h5 class="card-title">New Project Details</h5>
         <div class="form-group">
             <input type="text" class="form-control" [(ngModel)]="project.name" placeholder="Project name">
           </div>
@@ -10,8 +9,7 @@
             <input type="text" class="form-control" [(ngModel)]="project.description" placeholder="Short description">
           </div>
         <hr>
-        <button type="button" class="btn btn-primary" (click)="onUpdateProject()">Update</button>
-        <button type="button" class="btn btn-danger" (click)="onDeleteProject(project.id)">Delete</button>
+        <button type="button" class="btn btn-primary" (click)="onCreateProject()">Create</button>
         </div>
     </div>
 </section>

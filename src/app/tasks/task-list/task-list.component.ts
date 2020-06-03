@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TASKS } from '../mock-tasks';
+import { Task } from '../task';
+import { TaskService } from '../task.service';
+
 
 @Component({
   selector: 'task-list',
@@ -7,10 +9,24 @@ import { TASKS } from '../mock-tasks';
 })
 export class TaskListComponent implements OnInit {
 
-  tasks = TASKS;
+  tasks: Task[];
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.getTasks();
+  }
+
+  getTasks(): void {
+    this.taskService.getTasks()
+    .subscribe(tasks => this.tasks = tasks);
+  }
+
+  onDeleteTask(taskGuid): void {
+    this.taskService.deleteTask(taskGuid)
+    .subscribe(
+      r => this.getTasks()
+    )
+  }
 
 }

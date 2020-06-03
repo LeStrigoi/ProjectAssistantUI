@@ -1,0 +1,22 @@
+<section id="task-detail">
+    <div class="card task-card" style="width: 100%;">
+        <div class="card-body">
+        <h5 class="card-title">New Task Details</h5>
+        <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="task.name" placeholder="Task Name">
+          </div>
+         <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="task.description" placeholder="Task Description">
+          </div>
+          <select class="form-control form-control-lg" [(ngModel)]="selectedProjectId">
+            <option *ngFor="let project of projects" [ngValue]="project.id">{{project.name}}</option>
+          </select>
+          <select class="form-control form-control-lg" [(ngModel)]="selectedUserId">
+            <option *ngFor="let user of users" [ngValue]="user.id">{{user.name}}</option>
+          </select>
+        <hr>
+        <button type="button" class="btn btn-primary" (click)="onCreateTask()">Create</button>
+
+        </div>
+    </div>
+</section>

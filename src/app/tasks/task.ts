@@ -1,10 +1,7 @@
-import { Project } from '../projects/project';
-import { User } from '../users/user';
-
 export interface Task {
-    id: number;
+    id?: string;
     name: string;
     description: string;
-    project: Project;
-    assigned_user: User;
+    projectId?: string;
+    userId?: string;
 }

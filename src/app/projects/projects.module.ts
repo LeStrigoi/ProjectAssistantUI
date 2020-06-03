@@ -3,8 +3,8 @@ import { CommonModule }   from '@angular/common';
 import { FormsModule }    from '@angular/forms';
 import { ProjectListComponent }    from './project-list/project-list.component';
 import { ProjectsRoutingModule } from './projects-routing.module';
-// import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
-
+import { ProjectDetailComponent }  from './project-detail/project-detail.component';
+import { ProjectCreateComponent }  from './project-create/project-create.component';
 
 @NgModule({
   imports: [
@@ -13,8 +13,9 @@ import { ProjectsRoutingModule } from './projects-routing.module';
     ProjectsRoutingModule
   ],
   declarations: [
-    // HeroListComponent,
-    ProjectListComponent
+    ProjectDetailComponent,
+    ProjectListComponent,
+    ProjectCreateComponent
   ]
 })
 export class ProjectsModule {

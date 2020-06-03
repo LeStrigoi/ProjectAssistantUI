@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { USERS } from '../mock-users';
+import { User } from '../user';
+import { UserService } from '../user.service';
+
 
 @Component({
   selector: 'user-list',
@@ -7,10 +9,24 @@ import { USERS } from '../mock-users';
 })
 export class UserListComponent implements OnInit {
 
-  users = USERS;
+  users: User[];
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.getUsers();
+  }
+
+  getUsers(): void {
+    this.userService.getUsers()
+    .subscribe(users => this.users = users);
+  }
+
+  onDeleteUser(userGuid): void {
+    this.userService.deleteUser(userGuid)
+    .subscribe(
+      r => this.getUsers()
+    )
+  }
 
 }

@@ -1,7 +1,7 @@
 <h2>Users</h2>
 
 <section id="tasks">
-    <button type="button" class="btn btn-primary">Create new User</button>
+    <button type="button" class="btn btn-primary" routerLink="/user/new">Create new User</button>
       
       <table class="table table-striped">
         <thead>
@@ -13,13 +13,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let user of users$ | async">
+        <tr *ngFor="let user of users">
           <th scope="row">{{ user.id }}</th>
           <td>{{user.name}}</td>
-          <td>{{task.role}}</td>
+          <td>{{user.role}}</td>
           <td>
-              <button type="button" class="btn btn-primary">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
+              <button type="button" class="btn btn-primary" [routerLink]="['/user', user.id]">Edit</button>
+              <button type="button" class="btn btn-danger" (click)="onDeleteUser(user.id)">Delete</button>
           </td>
         </tr>
         </tbody>

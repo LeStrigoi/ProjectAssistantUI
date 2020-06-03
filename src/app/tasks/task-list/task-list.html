@@ -1,36 +1,27 @@
 <h2>Tasks</h2>
 
 <section id="tasks">
-    <button type="button" class="btn btn-primary">Create new Task</button>
-    <form>
-        <div class="form-group form-inline">
-            Filter by Project: <input class="form-control ml-2" type="text" [formControl]="filter"/>
-        </div>
-      </form>
-      
-      <table class="table table-striped">
+    <button type="button" class="btn btn-primary" routerLink="/task/new">Create new Task</button>
+        <table class="table table-striped">
         <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Description</th>
-          <th scope="col">Project</th>
-          <th scope="col">Assigned User</th>
-          <th scope="col">Actions</th>
+          <th scope="col">Project ID</th>
+          <th scope="col">User ID</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let task of tasks$ | async">
+        <tr *ngFor="let task of tasks">
           <th scope="row">{{ task.id }}</th>
           <td>{{task.name}}</td>
           <td>{{task.description}}</td>
+          <td>{{task.projectId}}</td>
+          <td>{{task.userId}}</td>
           <td>
-            <ngb-highlight [result]="task.project" [term]="filter.value"></ngb-highlight>
-          </td>
-          <td>{{task.assigned_user}}</td>
-          <td>
-              <button type="button" class="btn btn-primary">Edit</button>
-              <button type="button" class="btn btn-danger">Delete</button>
+              <button type="button" class="btn btn-primary" [routerLink]="['/task', task.id]">Edit</button>
+              <button type="button" class="btn btn-danger" (click)="onDeleteTask(task.id)">Delete</button>
           </td>
         </tr>
         </tbody>

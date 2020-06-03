@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PROJECTS } from '../mock-projects';
+import { ProjectService } from '../project.service';
+import { Project } from '../project';
 
 @Component({
   selector: 'project-list',
@@ -8,11 +9,24 @@ import { PROJECTS } from '../mock-projects';
 })
 export class ProjectListComponent implements OnInit {
 
-  projects = PROJECTS;
+  projects: Project[];
 
-  constructor() { }
+  constructor(private projectService: ProjectService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getProjects();
+  }
+
+  getProjects(): void {
+    this.projectService.getProjects()
+    .subscribe(projects => this.projects = projects);
+  }
+
+  onDeleteProject(projectGuid): void {
+    this.projectService.deleteProject(projectGuid)
+    .subscribe(
+      r => this.getProjects()
+    )
   }
 
 }

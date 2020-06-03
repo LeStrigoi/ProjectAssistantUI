@@ -1,7 +1,7 @@
 <section id="user-detail">
     <div class="card user-card" style="width: 100%;">
         <div class="card-body">
-        <h5 class="card-title">Editting User Details</h5>
+        <h5 class="card-title">New User Details</h5>
         <div class="form-group">
             <input type="text" class="form-control" [(ngModel)]="user.name" placeholder="User full name">
           </div>
@@ -12,8 +12,8 @@
             <option *ngFor="let project of projects" [ngValue]="project.id">{{project.name}}</option>
           </select>
         <hr>
-        <button type="button" class="btn btn-primary" (click)="onUpdateUser()">Update</button>
-        <button type="button" class="btn btn-danger" (click)="onDeleteUser(user.id)">Delete</button>
+        <button type="button" class="btn btn-primary" (click)="onCreateUser()">Create</button>
+
         </div>
     </div>
 </section>
