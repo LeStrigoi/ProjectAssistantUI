@@ -1,0 +1,11 @@
+<h2>Projects</h2>
+
+<section id="projects">
+    <button type="button" class="btn btn-primary">Create a New Project</button>
+    <div class="card project-card" style="width: 18rem;" *ngFor="let project of projects">
+        <div class="card-body">
+        <h5 class="card-title">{{project.name}}</h5>
+        <a href="/project/{{project.id}}" class="card-link">See project details &raquo;</a>
+        </div>
+    </div>
+</section>
