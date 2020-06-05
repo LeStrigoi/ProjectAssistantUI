@@ -1,7 +1,7 @@
 export interface Task {
-    id?: string;
+    id?:number;
     name: string;
     description: string;
-    projectId?: string;
-    userId?: string;
+    projectId?: number;
+    userId?: number;
 }

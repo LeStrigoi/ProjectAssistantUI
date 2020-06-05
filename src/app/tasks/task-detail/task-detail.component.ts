@@ -17,15 +17,15 @@ export class TaskDetailComponent implements OnInit {
   task: Task = {
     name: '',
     description: '',
-    projectId: '',
-    userId: '',
+    projectId: 1,
+    userId: 1,
   };
 
   projects: Project[];
   users: User[];
 
-  selectedProjectId: string;
-  selectedUserId: string;
+  selectedProjectId: number;
+  selectedUserId: number;
 
   constructor(private router: Router, private route: ActivatedRoute, private taskService: TaskService, private projectService: ProjectService, private userService: UserService) { }
   ngOnInit(): void {

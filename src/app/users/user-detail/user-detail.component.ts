@@ -19,7 +19,7 @@ export class UserDetailComponent implements OnInit {
 
   projects: Project[];
 
-  selectedProjectId: string;
+  selectedProjectId: number;
 
   constructor(private router: Router, private route: ActivatedRoute,  private userService: UserService, private projectService: ProjectService) { }
   ngOnInit(): void {

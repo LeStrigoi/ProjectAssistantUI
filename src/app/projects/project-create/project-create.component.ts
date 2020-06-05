@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectService } from '../project.service';
 import { Project } from '../project';
-import { Guid } from 'guid-typescript';
+
 @Component({
   selector: 'project-create',
   templateUrl: './project-create.html',
@@ -11,7 +11,7 @@ import { Guid } from 'guid-typescript';
 export class ProjectCreateComponent implements OnInit {
 
   project: Project = {
-    id: Guid.create().toString(),
+    id: 1,
     name: '',
     description: ''
   };

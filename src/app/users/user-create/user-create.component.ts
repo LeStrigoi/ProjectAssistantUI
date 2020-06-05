@@ -4,7 +4,7 @@ import { UserService } from '../user.service';
 import { ProjectService } from '../../projects/project.service';
 import { User } from '../user';
 import { Project } from '../../projects/project';
-import { Guid } from 'guid-typescript';
+
 @Component({
   selector: 'user-create',
   templateUrl: './user-create.html',
@@ -13,15 +13,15 @@ import { Guid } from 'guid-typescript';
 export class UserCreateComponent implements OnInit {
 
   user: User = {
-    id: Guid.create().toString(),
+    id: 1,
     name: '',
     role: '',
-    projectId: '',
+    projectId: 1,
   };
 
   projects: Project[];
 
-  selectedProjectId: string;
+  selectedProjectId: number;
 
   constructor(private router: Router, private userService: UserService, private projectService: ProjectService) { }
 

@@ -15,18 +15,18 @@ import { Guid } from 'guid-typescript';
 export class TaskCreateComponent implements OnInit {
 
   task: Task = {
-    id: Guid.create().toString(),
+    id: 1,
     name: '',
     description: '',
-    projectId: '',
-    userId: '',
+    projectId: 1,
+    userId: 1,
   };
 
   projects: Project[];
   users: User[];
 
-  selectedProjectId: string;
-  selectedUserId: string;
+  selectedProjectId: number;
+  selectedUserId: number;
 
   constructor(private router: Router, private taskService: TaskService, private projectService: ProjectService, private userService: UserService) { }
 
